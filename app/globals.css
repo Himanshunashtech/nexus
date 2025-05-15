@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 10, 31;
+  --background-end-rgb: 0, 0, 0;
+  --background: 240 50% 2%;
+  --foreground: 0 0% 98%;
+  --card: 240 40% 4%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 45% 3%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 180 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 300 100% 50%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 20% 12%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 270 76% 53%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 20% 20%;
+  --input: 240 20% 12%;
+  --ring: 180 100% 50%;
+  --chart-1: 180 100% 50%;
+  --chart-2: 300 100% 50%;
+  --chart-3: 270 76% 53%;
+  --chart-4: 195 100% 50%;
+  --chart-5: 150 100% 50%;
+  --radius: 0.5rem;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    )
+    no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply border-2 border-neon-cyan shadow-neon-cyan rounded-md;
+  }
+  
+  .neon-border-magenta {
+    @apply border-2 border-neon-magenta shadow-neon-magenta rounded-md;
+  }
+  
+  .neon-border-purple {
+    @apply border-2 border-neon-purple shadow-neon-purple rounded-md;
+  }
+  
+  .neon-border-blue {
+    @apply border-2 border-neon-blue shadow-neon-blue rounded-md;
+  }
+  
+  .neon-text {
+    @apply text-neon-cyan;
+    text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF;
+  }
+  
+  .neon-text-magenta {
+    @apply text-neon-magenta;
+    text-shadow: 0 0 5px #FF00FF, 0 0 10px #FF00FF;
+  }
+  
+  .neon-text-purple {
+    @apply text-neon-purple;
+    text-shadow: 0 0 5px #8A2BE2, 0 0 10px #8A2BE2;
+  }
+  
+  .neon-text-blue {
+    @apply text-neon-blue;
+    text-shadow: 0 0 5px #00BFFF, 0 0 10px #00BFFF;
+  }
+  
+  .glassmorphism {
+    @apply bg-opacity-10 backdrop-filter backdrop-blur-lg border border-white/10 rounded-lg;
+  }
+  
+  .cosmic-bg {
+    @apply bg-cosmic-dark bg-cosmic-background;
+  }
+  
+  .grid-bg {
+    background-size: 40px 40px;
+    background-image: 
+      radial-gradient(circle, rgba(0, 255, 255, 0.1) 1px, transparent 1px), 
+      linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
+  .quantum-grid {
+    @apply bg-quantum-grid bg-[length:40px_40px];
+  }
+  
+  .holographic-text {
+    background-image: linear-gradient(45deg, #00FFFF, #FF00FF, #8A2BE2, #00BFFF);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient 5s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes glow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+}
+
+.three-canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.three-canvas-interactive {
+  position: relative !important;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.three-canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.portal-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 0%, #000 100%);
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.portal-transition.active {
+  opacity: 1;
+}
